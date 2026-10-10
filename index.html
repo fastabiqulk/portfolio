@@ -1,0 +1,1079 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080b14">
+<meta name="description" content="Portofolio pribadi Fasta Biqul Khairat, mahasiswa PTIK yang tertarik pada teknologi, pemrograman, dan desain.">
+<title>Fasta Biqul Khairat | Portfolio</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg: #080b14;
+  --surface: #101624;
+  --surface2: #141c2e;
+  --line: rgba(255,255,255,.09);
+  --text: #f4f6ff;
+  --muted: #98a4bb;
+  --blue: #64d5ff;
+  --purple: #a78bfa;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 95px;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 10% 10%, #183c6533, transparent 38%),
+    radial-gradient(ellipse at 90% 45%, #6635a522, transparent 35%);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button, a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.container {
+  width: min(1080px, 90%);
+  margin: auto;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(8,11,20,.88);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav {
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.brand {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 25px;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+.brand span {
+  color: var(--blue);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.nav-links a {
+  color: var(--muted);
+  font-size: 12px;
+  transition: .25s;
+}
+
+.nav-links a:hover {
+  color: var(--blue);
+}
+
+.nav-contact {
+  border: 1px solid #64d5ff66;
+  border-radius: 9px;
+  padding: 9px 14px;
+  color: var(--blue) !important;
+}
+
+.hero {
+  padding: 105px 0 100px;
+  position: relative;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.25fr .75fr;
+  gap: 55px;
+  align-items: center;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  border: 1px solid #64d5ff33;
+  background: #64d5ff0c;
+  border-radius: 50px;
+  padding: 7px 13px;
+  color: var(--blue);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  background: #66e5b2;
+  border-radius: 50%;
+  box-shadow: 0 0 12px #66e5b2;
+}
+
+.hero h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(39px, 6.3vw, 68px);
+  line-height: 1.12;
+  letter-spacing: -2.8px;
+  margin: 24px 0 20px;
+}
+
+.gradient {
+  background: linear-gradient(100deg, #64d5ff 0%, #9e9bff 55%, #d0a3ff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-description {
+  max-width: 520px;
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.95;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 9px;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  transition: .25s;
+}
+
+.btn-primary {
+  background: linear-gradient(110deg, var(--blue), #a9a4ff);
+  color: #08101d;
+}
+
+.btn-secondary {
+  border: 1px solid var(--line);
+  background: #ffffff06;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px #64d5ff18;
+}
+
+.social-text {
+  margin-top: 29px;
+  color: #77849c;
+  font-size: 11px;
+}
+
+.social-text span {
+  color: #d8e0f1;
+}
+
+.profile-area {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.profile-card {
+  width: 100%;
+  max-width: 310px;
+  padding: 14px;
+  border: 1px solid #ffffff15;
+  border-radius: 24px;
+  background: linear-gradient(145deg, #182238, #101522);
+  box-shadow: 0 25px 80px #0005;
+  transform: rotate(2deg);
+  transition: .35s;
+}
+
+.profile-card:hover {
+  transform: rotate(0deg) translateY(-5px);
+}
+
+.profile-picture {
+  height: 290px;
+  border-radius: 16px;
+  background:
+    radial-gradient(circle at 50% 25%, #365b80, transparent 42%),
+    linear-gradient(145deg, #1a2b47, #221a39);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.profile-picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.initial {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 90px;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 0 0 40px #64d5ff66;
+}
+
+.profile-caption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 17px 5px 6px;
+}
+
+.profile-caption strong {
+  font-size: 12px;
+}
+
+.profile-caption small {
+  display: block;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.profile-icon {
+  font-size: 25px;
+}
+
+.floating-label {
+  position: absolute;
+  bottom: 55px;
+  left: -15px;
+  background: #141d30;
+  border: 1px solid #ffffff15;
+  border-radius: 12px;
+  padding: 12px 15px;
+  box-shadow: 0 10px 35px #0005;
+  font-size: 11px;
+}
+
+.floating-label strong {
+  color: var(--blue);
+}
+
+.section {
+  padding: 82px 0;
+}
+
+.section-top {
+  margin-bottom: 36px;
+}
+
+.kicker {
+  color: var(--blue);
+  text-transform: uppercase;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+}
+
+.section-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(28px, 4vw, 40px);
+  line-height: 1.25;
+  letter-spacing: -1px;
+  margin-top: 8px;
+}
+
+.section-desc {
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 10px;
+  max-width: 580px;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 22px;
+}
+
+.panel {
+  background: linear-gradient(145deg, #141c2c, #0e1420);
+  border: 1px solid var(--line);
+  border-radius: 19px;
+  padding: 27px;
+}
+
+.panel h3 {
+  font-size: 17px;
+  margin-bottom: 13px;
+}
+
+.panel p {
+  font-size: 13px;
+  line-height: 1.95;
+  color: var(--muted);
+}
+
+.info-list {
+  display: grid;
+  gap: 16px;
+}
+
+.info-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+}
+
+.info-icon {
+  width: 39px;
+  height: 39px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 11px;
+  background: #64d5ff10;
+  border: 1px solid #64d5ff20;
+}
+
+.info-row strong {
+  display: block;
+  font-size: 12px;
+}
+
+.info-row span {
+  display: block;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.skill-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 15px;
+  padding: 20px 15px;
+  text-align: center;
+  transition: .25s;
+}
+
+.skill-card:hover, .item-card:hover {
+  transform: translateY(-5px);
+  border-color: #64d5ff66;
+}
+
+.skill-icon {
+  font-size: 27px;
+  margin-bottom: 8px;
+}
+
+.skill-card h3 {
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+.skill-card p {
+  font-size: 10px;
+  color: var(--muted);
+}
+
+.items-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.item-card {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 17px;
+  background: linear-gradient(145deg, #141c2b, #0e1320);
+  transition: .25s;
+}
+
+.card-visual {
+  height: 155px;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 50% 50%, #64d5ff1c, transparent 55%),
+    linear-gradient(135deg, #172842, #20182f);
+  border-bottom: 1px solid var(--line);
+  font-size: 48px;
+}
+
+.card-body {
+  padding: 21px;
+}
+
+.card-label {
+  display: inline-block;
+  color: var(--blue);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  margin-bottom: 9px;
+}
+
+.card-body h3 {
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+
+.card-body p {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.9;
+}
+
+.card-footer {
+  margin-top: 17px;
+  padding-top: 13px;
+  border-top: 1px solid var(--line);
+  color: #c4cce0;
+  font-size: 10px;
+}
+
+.certificate-visual {
+  position: relative;
+  height: 175px;
+  padding: 14px;
+  background: linear-gradient(135deg, #162b42, #29203e);
+  display: grid;
+  place-items: center;
+  border-bottom: 1px solid var(--line);
+}
+
+.certificate-paper {
+  width: 88%;
+  height: 135px;
+  border: 2px solid #d8c28d88;
+  background: #f0e9d7;
+  color: #24304a;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 10px;
+  box-shadow: 0 8px 25px #0003;
+}
+
+.certificate-paper span {
+  font-size: 8px;
+  letter-spacing: 2px;
+}
+
+.certificate-paper strong {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  margin: 6px 0;
+}
+
+.certificate-paper small {
+  font-size: 8px;
+}
+
+.placeholder-note {
+  font-size: 10px !important;
+  color: #b6c1d8 !important;
+  margin-top: 12px;
+}
+
+.card-link {
+  display: inline-block;
+  margin-top: 12px;
+  color: var(--blue);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.contact-panel {
+  text-align: center;
+  border: 1px solid #64d5ff25;
+  border-radius: 24px;
+  padding: 53px 25px;
+  background:
+    radial-gradient(ellipse at 50% 0%, #4c67a333, transparent 60%),
+    #101624;
+}
+
+.contact-panel .section-desc {
+  margin: 12px auto 25px;
+}
+
+.contact-panel .actions {
+  justify-content: center;
+  margin-top: 20px;
+}
+
+footer {
+  border-top: 1px solid var(--line);
+  padding: 25px 0;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  flex-wrap: wrap;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.footer-inner strong {
+  color: #e4eaff;
+}
+
+@media (max-width: 800px) {
+  .nav {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 13px 0;
+    gap: 8px;
+  }
+
+  .nav-links {
+    width: 100%;
+    gap: 18px;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 5px 0 8px;
+    scrollbar-width: none;
+  }
+
+  .nav-links::-webkit-scrollbar {
+    display: none;
+  }
+
+  .hero {
+    padding: 70px 0;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 45px;
+  }
+
+  .profile-area {
+    max-width: 340px;
+    width: 100%;
+    margin: auto;
+  }
+
+  .floating-label {
+    left: -5px;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .items-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: 90%;
+  }
+
+  .hero h1 {
+    font-size: 42px;
+    letter-spacing: -1.8px;
+  }
+
+  .hero-description {
+    font-size: 13px;
+  }
+
+  .section {
+    padding: 63px 0;
+  }
+
+  .items-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card-visual {
+    height: 175px;
+  }
+
+  .panel {
+    padding: 21px;
+  }
+
+  .contact-panel {
+    padding: 38px 18px;
+  }
+
+  .btn {
+    padding: 12px 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+    <a class="brand" href="#home">fasta<span>.</span></a>
+
+    <nav class="nav-links" aria-label="Navigasi utama">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#prestasi">Prestasi</a>
+      <a href="#sertifikat">Sertifikat</a>
+      <a href="#project">Project</a>
+      <a href="#contact" class="nav-contact">Contact ↗</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero" id="home">
+  <div class="container hero-grid">
+
+    <div>
+      <div class="eyebrow">
+        <span class="dot"></span>
+        PERSONAL PORTFOLIO
+      </div>
+
+      <h1>
+        Halo, saya<br>
+        <span class="gradient">Fasta Biqul<br>Khairat.</span>
+      </h1>
+
+      <p class="hero-description">
+        Mahasiswa Pendidikan Teknik Informatika dan Komputer (PTIK)
+        yang tertarik pada teknologi, pemrograman, jaringan komputer,
+        dan desain kreatif. Terus belajar, berkarya, dan berkembang
+        menjadi versi terbaik diri sendiri.
+      </p>
+
+      <div class="actions">
+        <a href="#project" class="btn btn-primary">Jelajahi Karya ↗</a>
+        <a href="#about" class="btn btn-secondary">Tentang Saya</a>
+      </div>
+
+      <div class="social-text">
+        CURRENTLY LEARNING &nbsp; <span>Technology • Creativity • Code</span>
+      </div>
+    </div>
+
+    <div class="profile-area">
+      <div class="profile-card">
+        <div class="profile-picture">
+          <!-- Nanti ganti bagian ini dengan foto asli -->
+          <span class="initial">F.</span>
+        </div>
+
+        <div class="profile-caption">
+          <div>
+            <strong>Fasta Biqul Khairat</strong>
+            <small>PTIK Student · Indonesia</small>
+          </div>
+          <span class="profile-icon">✦</span>
+        </div>
+      </div>
+
+      <div class="floating-label">
+        <strong>✦ OPEN TO LEARN</strong>
+        <div>Building my future with technology.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="container">
+    <div class="section-top">
+      <span class="kicker">01 / ABOUT ME</span>
+      <h2 class="section-title">Mengenal <span class="gradient">Saya</span></h2>
+      <p class="section-desc">
+        Sedikit cerita tentang diri saya, pendidikan, dan hal yang ingin saya kembangkan.
+      </p>
+    </div>
+
+    <div class="about-grid">
+      <div class="panel">
+        <h3>Belajar hari ini, berkembang esok hari.</h3>
+        <p>
+          Saya adalah mahasiswa PTIK semester 1 yang memiliki ketertarikan
+          pada dunia komputer dan teknologi. Saya senang mempelajari hal
+          baru, mencoba membuat program, mengembangkan website, serta
+          menuangkan ide melalui desain grafis.
+          Bagi saya, setiap proses belajar adalah kesempatan untuk
+          menambah pengalaman dan menghasilkan karya yang bermanfaat.
+        </p>
+      </div>
+
+      <div class="panel">
+        <div class="info-list">
+          <div class="info-row">
+            <div class="info-icon">🎓</div>
+            <div>
+              <strong>Pendidikan</strong>
+              <span>Mahasiswa PTIK · Semester 1</span>
+            </div>
+          </div>
+
+          <div class="info-row">
+            <div class="info-icon">💻</div>
+            <div>
+              <strong>Bidang Minat</strong>
+              <span>Teknologi, coding, dan jaringan</span>
+            </div>
+          </div>
+
+          <div class="info-row">
+            <div class="info-icon">🎨</div>
+            <div>
+              <strong>Kreativitas</strong>
+              <span>Desain grafis dan pembuatan poster</span>
+            </div>
+          </div>
+
+          <div class="info-row">
+            <div class="info-icon">🚀</div>
+            <div>
+              <strong>Tujuan</strong>
+              <span>Terus belajar dan membuat karya baru</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="skills">
+  <div class="container">
+    <div class="section-top">
+      <span class="kicker">02 / WHAT I DO</span>
+      <h2 class="section-title">Skills & <span class="gradient">Interests</span></h2>
+      <p class="section-desc">
+        Beberapa kemampuan dan bidang yang sedang saya pelajari.
+      </p>
+    </div>
+
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-icon">🌐</div>
+        <h3>HTML & CSS</h3>
+        <p>Web development</p>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon">⚙️</div>
+        <h3>C++ Dasar</h3>
+        <p>Programming</p>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon">📡</div>
+        <h3>Networking</h3>
+        <p>Jaringan komputer</p>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon">🎨</div>
+        <h3>Graphic Design</h3>
+        <p>Poster & logo</p>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon">🐧</div>
+        <h3>Linux</h3>
+        <p>Dasar administrasi</p>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon">🖥️</div>
+        <h3>MikroTik</h3>
+        <p>Konfigurasi dasar</p>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon">⌨️</div>
+        <h3>Typing</h3>
+        <p>Pengetikan dokumen</p>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon">💡</div>
+        <h3>Problem Solving</h3>
+        <p>Belajar memecahkan masalah</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="prestasi">
+  <div class="container">
+    <div class="section-top">
+      <span class="kicker">03 / ACHIEVEMENTS</span>
+      <h2 class="section-title">Prestasi & <span class="gradient">Pencapaian</span></h2>
+      <p class="section-desc">
+        Tempat untuk menampilkan pencapaian, penghargaan, dan pengalaman yang pernah diraih.
+      </p>
+    </div>
+
+    <div class="items-grid">
+      <article class="item-card">
+        <div class="card-visual">🏆</div>
+        <div class="card-body">
+          <span class="card-label">ACHIEVEMENT 01</span>
+          <h3>Prestasi Pertama</h3>
+          <p>
+            Tuliskan nama lomba, penghargaan, atau pencapaian
+            yang benar-benar pernah kamu raih.
+          </p>
+          <div class="card-footer">Tahun: isi sesuai pencapaian</div>
+        </div>
+      </article>
+
+      <article class="item-card">
+        <div class="card-visual">🥇</div>
+        <div class="card-body">
+          <span class="card-label">ACHIEVEMENT 02</span>
+          <h3>Prestasi Kedua</h3>
+          <p>
+            Tambahkan pencapaian lain beserta sedikit penjelasan
+            tentang pengalaman tersebut.
+          </p>
+          <div class="card-footer">Tahun: isi sesuai pencapaian</div>
+        </div>
+      </article>
+
+      <article class="item-card">
+        <div class="card-visual">🌟</div>
+        <div class="card-body">
+          <span class="card-label">EXPERIENCE</span>
+          <h3>Pengalaman Berharga</h3>
+          <p>
+            Bisa diisi pengalaman organisasi, pelatihan,
+            proyek, atau kegiatan yang pernah diikuti.
+          </p>
+          <div class="card-footer">Pengalaman & pengembangan diri</div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="sertifikat">
+  <div class="container">
+    <div class="section-top">
+      <span class="kicker">04 / CERTIFICATIONS</span>
+      <h2 class="section-title">My <span class="gradient">Certificates</span></h2>
+      <p class="section-desc">
+        Koleksi sertifikat pelatihan dan kegiatan. Gambar aslinya bisa ditambahkan nanti.
+      </p>
+    </div>
+
+    <div class="items-grid">
+      <article class="item-card">
+        <div class="certificate-visual">
+          <div class="certificate-paper">
+            <span>CERTIFICATE OF</span>
+            <strong>ACHIEVEMENT</strong>
+            <small>Nama penerima dan penyelenggara</small>
+          </div>
+        </div>
+        <div class="card-body">
+          <span class="card-label">CERTIFICATE 01</span>
+          <h3>Sertifikat Pertama</h3>
+          <p>Tambahkan nama pelatihan atau kegiatan setelah sertifikat tersedia.</p>
+          <p class="placeholder-note">Gambar sertifikat akan ditambahkan nanti.</p>
+        </div>
+      </article>
+
+      <article class="item-card">
+        <div class="certificate-visual">
+          <div class="certificate-paper">
+            <span>CERTIFICATE OF</span>
+            <strong>PARTICIPATION</strong>
+            <small>Nama penerima dan penyelenggara</small>
+          </div>
+        </div>
+        <div class="card-body">
+          <span class="card-label">CERTIFICATE 02</span>
+          <h3>Sertifikat Kedua</h3>
+          <p>Isi dengan nama kegiatan, penyelenggara, dan tahun sertifikat.</p>
+          <p class="placeholder-note">Gambar sertifikat akan ditambahkan nanti.</p>
+        </div>
+      </article>
+
+      <article class="item-card">
+        <div class="certificate-visual">
+          <div class="certificate-paper">
+            <span>CERTIFICATE OF</span>
+            <strong>COMPLETION</strong>
+            <small>Nama penerima dan penyelenggara</small>
+          </div>
+        </div>
+        <div class="card-body">
+          <span class="card-label">CERTIFICATE 03</span>
+          <h3>Sertifikat Ketiga</h3>
+          <p>Bagian ini bisa diisi dengan sertifikat lain yang kamu miliki.</p>
+          <p class="placeholder-note">Gambar sertifikat akan ditambahkan nanti.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="project">
+  <div class="container">
+    <div class="section-top">
+      <span class="kicker">05 / SELECTED WORKS</span>
+      <h2 class="section-title">My <span class="gradient">Projects</span></h2>
+      <p class="section-desc">
+        Kumpulan karya dan proyek yang akan terus saya kembangkan.
+      </p>
+    </div>
+
+    <div class="items-grid">
+      <article class="item-card">
+        <div class="card-visual">💻</div>
+        <div class="card-body">
+          <span class="card-label">WEB DEVELOPMENT</span>
+          <h3>Personal Portfolio</h3>
+          <p>Website pribadi untuk memperkenalkan profil, kemampuan, prestasi, dan karya.</p>
+          <div class="card-footer">HTML · CSS</div>
+        </div>
+      </article>
+
+      <article class="item-card">
+        <div class="card-visual">🎨</div>
+        <div class="card-body">
+          <span class="card-label">CREATIVE DESIGN</span>
+          <h3>Desain Grafis</h3>
+          <p>Tempat menampilkan desain poster, logo, dan karya visual buatan sendiri.</p>
+          <div class="card-footer">Design · Creativity</div>
+        </div>
+      </article>
+
+      <article class="item-card">
+        <div class="card-visual">⚙️</div>
+        <div class="card-body">
+          <span class="card-label">PROGRAMMING</span>
+          <h3>Project Pemrograman</h3>
+          <p>Dokumentasi program latihan dan proyek pemrograman yang telah diselesaikan.</p>
+          <div class="card-footer">C++ · Algorithms</div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <div class="container">
+    <div class="contact-panel">
+      <span class="kicker">06 / GET IN TOUCH</span>
+      <h2 class="section-title">
+        Mari Terhubung & <span class="gradient">Berkolaborasi</span>
+      </h2>
+      <p class="section-desc">
+        Saya terbuka untuk berbagi ide, belajar hal baru,
+        dan menjalin koneksi di dunia teknologi.
+      </p>
+
+      <div class="actions">
+        <!-- Ganti dengan email milikmu -->
+        <a class="btn btn-primary"
+           href="mailto:emailkamu@gmail.com">✉ Kirim Email</a>
+
+        <!-- Ganti URL dengan akun media sosial milikmu -->
+        <a class="btn btn-secondary"
+           href="https://instagram.com/"
+           target="_blank" rel="noopener noreferrer">Instagram ↗</a>
+
+        <a class="btn btn-secondary"
+           href="https://github.com/"
+           target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <span>© 2026 <strong>Fasta Biqul Khairat</strong></span>
+    <span>Designed with creativity & 💙</span>
+  </div>
+</footer>
+
+</body>
+</html>
