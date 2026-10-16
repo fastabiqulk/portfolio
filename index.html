@@ -1,437 +1,199 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Portofolio Fasta Biqul Khairat, mahasiswa PTIK yang tertarik pada teknologi, jaringan, pemrograman, desain, dan seni Minangkabau.">
-  <meta name="theme-color" content="#030817">
-  <title>Fasta Biqul Khairat | Portofolio</title>
-  <style>
-    :root {
-      --bg: #030817;
-      --panel: rgba(7, 20, 43, .88);
-      --panel2: rgba(8, 29, 59, .78);
-      --blue: #16b8ff;
-      --blue2: #315cff;
-      --purple: #8c5bff;
-      --text: #f1f7ff;
-      --muted: #b7c9e6;
-      --line: rgba(30, 148, 255, .48);
-      --glow: 0 0 24px rgba(0, 145, 255, .22);
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 82px; }
-    body {
-      margin: 0; color: var(--text); background: var(--bg);
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      line-height: 1.6; overflow-x: hidden;
-      background-image:
-        radial-gradient(ellipse at 15% 15%, rgba(0, 87, 190, .17), transparent 34%),
-        radial-gradient(ellipse at 90% 50%, rgba(63, 40, 180, .12), transparent 35%),
-        linear-gradient(rgba(3, 8, 23, .97), rgba(3, 8, 23, .98));
-    }
-    body::before {
-      content: ""; position: fixed; inset: 0; pointer-events: none; z-index: -1;
-      background-image: linear-gradient(rgba(25, 133, 255, .045) 1px, transparent 1px),
-                        linear-gradient(90deg, rgba(25, 133, 255, .045) 1px, transparent 1px);
-      background-size: 44px 44px;
-      mask-image: linear-gradient(to bottom, black, transparent 85%);
-    }
-    a { color: inherit; text-decoration: none; }
-    button, input, textarea { font: inherit; }
-    .wrap { width: min(1160px, calc(100% - 36px)); margin: auto; }
-    .topbar {
-      position: sticky; top: 0; z-index: 50; backdrop-filter: blur(18px);
-      background: rgba(3, 8, 23, .88); border-bottom: 1px solid var(--line);
-    }
-    .nav { min-height: 70px; display: flex; align-items: center; justify-content: space-between; gap: 18px; }
-    .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: .2px; white-space: nowrap; }
-    .brand-mark { font-size: 25px; font-weight: 950; color: var(--blue); text-shadow: 0 0 16px var(--blue); }
-    .navlinks { display: flex; align-items: center; gap: 23px; font-size: 14px; color: var(--muted); }
-    .navlinks a:hover, .navlinks a.active { color: var(--blue); }
-    .navlinks a { transition: color .2s; }
-    .menu-btn { display: none; border: 1px solid var(--line); color: var(--text); background: var(--panel); border-radius: 10px; padding: 8px 12px; }
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center; gap: 9px;
-      padding: 11px 18px; border-radius: 999px; border: 1px solid var(--line);
-      background: linear-gradient(100deg, #087cff, #5146ff); color: white; font-weight: 750; font-size: 14px;
-      box-shadow: 0 0 22px rgba(25, 119, 255, .2); transition: transform .2s, box-shadow .2s;
-    }
-    .btn:hover { transform: translateY(-2px); box-shadow: 0 0 28px rgba(25, 119, 255, .42); }
-    .btn.ghost { background: rgba(4, 13, 31, .72); }
-    .hero {
-      min-height: 570px; display: grid; align-items: center; position: relative; overflow: hidden;
-      border-bottom: 1px solid var(--line);
-      background:
-        linear-gradient(90deg, rgba(3,8,23,.98) 0%, rgba(3,8,23,.92) 37%, rgba(3,8,23,.38) 72%, rgba(3,8,23,.72) 100%),
-        radial-gradient(ellipse at 76% 48%, rgba(0, 117, 255, .25), transparent 38%);
-    }
-    .hero::before, .hero::after { content: ""; position: absolute; pointer-events: none; }
-    .hero::before {
-      width: 430px; height: 430px; right: 8%; top: 5%; border: 1px solid rgba(0, 162, 255, .23);
-      border-radius: 50%; box-shadow: 0 0 0 22px rgba(0, 145, 255, .035), 0 0 0 50px rgba(0, 145, 255, .025), inset 0 0 55px rgba(0, 128, 255, .08);
-      animation: pulse 5s ease-in-out infinite;
-    }
-    .hero::after {
-      inset: 0; opacity: .4;
-      background: repeating-linear-gradient(135deg, transparent 0 95px, rgba(20, 127, 255, .08) 96px 97px, transparent 98px 170px);
-      mask-image: linear-gradient(90deg, transparent 15%, black 100%);
-    }
-    @keyframes pulse { 0%,100% { transform: scale(.98); opacity: .65; } 50% { transform: scale(1.03); opacity: 1; } }
-    .hero-grid { position: relative; z-index: 2; display: grid; grid-template-columns: 1.05fr .95fr; align-items: center; gap: 25px; padding-top: 55px; padding-bottom: 55px; }
-    .eyebrow { color: var(--blue); font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 2.5px; }
-    h1 { margin: 9px 0 10px; font-size: clamp(42px, 6vw, 72px); line-height: 1.03; letter-spacing: -2px; }
-    .gradient-text { background: linear-gradient(100deg, var(--blue), #5a7cff 55%, #bd74ff); -webkit-background-clip: text; background-clip: text; color: transparent; }
-    .hero h2 { margin: 0 0 15px; font-size: clamp(16px, 2vw, 20px); color: #d5e6ff; font-weight: 650; }
-    .hero p { max-width: 560px; color: var(--muted); margin: 0 0 23px; }
-    .actions { display: flex; flex-wrap: wrap; gap: 12px; }
-    .socials { display: flex; gap: 10px; margin-top: 23px; }
-    .socials a { width: 38px; height: 38px; border: 1px solid var(--line); border-radius: 50%; display: grid; place-items: center; color: #d8e9ff; background: rgba(7, 21, 44, .8); font-size: 13px; font-weight: 800; }
-    .socials a:hover { color: var(--blue); box-shadow: var(--glow); }
-    .photo-frame { position: relative; min-height: 390px; display: grid; place-items: center; }
-    .photo-orbit { position: absolute; width: min(390px, 90%); aspect-ratio: 1; border-radius: 50%; border: 1px solid rgba(22,184,255,.7); box-shadow: 0 0 28px rgba(0,145,255,.16), inset 0 0 25px rgba(0,145,255,.12); }
-    .photo-orbit::before, .photo-orbit::after { content: ""; position: absolute; border-radius: 50%; inset: 15px; border: 1px dashed rgba(129,100,255,.65); animation: spin 24s linear infinite; }
-    .photo-orbit::after { inset: -14px; border-style: solid; border-color: rgba(22,184,255,.2); animation-direction: reverse; animation-duration: 35s; }
-    @keyframes spin { to { transform: rotate(360deg); } }
-    .photo-placeholder {
-      position: relative; z-index: 2; width: min(300px, 72%); aspect-ratio: 4/5; border-radius: 24px;
-      display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 12px;
-      background: linear-gradient(145deg, rgba(11, 38, 77, .95), rgba(3, 10, 25, .96));
-      border: 1px solid var(--blue); box-shadow: 0 0 30px rgba(0,145,255,.24); overflow: hidden; padding: 20px;
-    }
-    .photo-placeholder .camera { font-size: 46px; filter: drop-shadow(0 0 14px var(--blue)); }
-    .photo-placeholder strong { font-size: 18px; }
-    .photo-placeholder span { color: var(--muted); font-size: 13px; }
-    .photo-placeholder small { color: var(--blue); font-size: 11px; }
-    .section { padding: 58px 0; position: relative; }
-    .section-title { margin-bottom: 25px; }
-    .section-title .eyebrow { letter-spacing: 2px; }
-    h2.section-heading { font-size: clamp(27px, 4vw, 36px); margin: 5px 0 0; }
-    .section-intro { color: var(--muted); margin: 7px 0 0; }
-    .panel { background: linear-gradient(145deg, rgba(8, 24, 50, .91), rgba(4, 13, 29, .91)); border: 1px solid var(--line); border-radius: 20px; box-shadow: var(--glow); }
-    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-    .about-card { padding: 25px; display: flex; gap: 22px; align-items: flex-start; }
-    .mini-photo { width: 145px; min-width: 145px; min-height: 175px; display: grid; place-items: center; text-align: center; padding: 12px; border: 1px dashed var(--blue); border-radius: 14px; background: rgba(0, 119, 255, .07); color: var(--muted); }
-    .mini-photo span { font-size: 35px; color: var(--blue); }
-    .about-card h3, .skills-card h3 { margin: 0 0 8px; }
-    .about-card p { margin: 0 0 12px; color: var(--muted); font-size: 14px; }
-    .facts { display: grid; gap: 9px; margin-top: 15px; font-size: 13px; }
-    .facts strong { display: block; color: #e8f4ff; }
-    .facts span { color: var(--muted); }
-    .skills-card { padding: 25px; }
-    .skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
-    .skill { min-height: 88px; padding: 12px 7px; text-align: center; display: grid; align-content: center; gap: 4px; border: 1px solid rgba(34, 112, 207, .3); border-radius: 13px; background: rgba(8, 28, 57, .8); }
-    .skill .symbol { font-size: 24px; color: var(--blue); font-weight: 900; }
-    .skill span:last-child { font-size: 12px; color: #d7e7ff; }
-    .projects-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
-    .project { padding: 12px; overflow: hidden; transition: transform .2s, border-color .2s; }
-    .project:hover { transform: translateY(-5px); border-color: var(--blue); }
-    .project-visual { height: 130px; border-radius: 12px; display: grid; place-items: center; text-align: center; padding: 12px; color: var(--blue); font-size: 35px; background: radial-gradient(circle at 50% 35%, rgba(0,135,255,.22), transparent 55%), linear-gradient(135deg, #091d3b, #030918); border: 1px solid rgba(22,184,255,.2); }
-    .project h3 { font-size: 16px; margin: 12px 0 5px; }
-    .project p { color: var(--muted); font-size: 13px; margin: 0 0 12px; }
-    .tags { display: flex; flex-wrap: wrap; gap: 6px; }
-    .tag { font-size: 11px; border: 1px solid rgba(22,184,255,.45); color: #9de4ff; border-radius: 999px; padding: 2px 8px; }
-    .art-card { display: grid; grid-template-columns: .7fr 1.3fr; overflow: hidden; }
-    .art-visual { min-height: 280px; display: grid; place-items: center; text-align: center; padding: 28px; background: radial-gradient(circle at center, rgba(140,91,255,.2), transparent 50%), linear-gradient(145deg, #0c1f3e, #030817); border-right: 1px solid var(--line); }
-    .art-visual .art-icon { font-size: 65px; filter: drop-shadow(0 0 18px rgba(140,91,255,.8)); }
-    .art-visual strong { display: block; font-size: 18px; margin-top: 10px; }
-    .art-content { padding: 32px; }
-    .art-content h3 { margin: 0 0 8px; font-size: 23px; }
-    .art-content p { color: var(--muted); }
-    .art-pills { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 18px; }
-    .art-pills span { border: 1px solid rgba(140,91,255,.5); color: #d4c5ff; padding: 8px 12px; border-radius: 12px; font-size: 13px; }
-    .contact-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 20px; }
-    .contact-info, .contact-form { padding: 25px; }
-    .contact-info p { color: var(--muted); }
-    .contact-line { display: flex; align-items: center; gap: 12px; margin-top: 16px; color: #d8eaff; overflow-wrap: anywhere; }
-    .contact-line b { color: var(--blue); font-size: 19px; width: 25px; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    label { display: block; color: #d9eaff; font-size: 13px; margin-bottom: 6px; }
-    input, textarea { width: 100%; border-radius: 11px; border: 1px solid rgba(48,125,214,.42); background: rgba(2, 9, 23, .85); color: var(--text); padding: 12px; outline: none; margin-bottom: 13px; }
-    input:focus, textarea:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(22,184,255,.09); }
-    textarea { min-height: 125px; resize: vertical; }
-    .form-note { font-size: 12px; color: var(--muted); margin: 9px 0 0; }
-    footer { padding: 24px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
-    .footer-inner { display: flex; justify-content: space-between; gap: 15px; flex-wrap: wrap; }
-    .backtop { position: fixed; bottom: 18px; right: 18px; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line); background: #071a36; color: var(--blue); font-size: 20px; display: grid; place-items: center; z-index: 20; box-shadow: var(--glow); }
-    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s, transform .65s; }
-    .reveal.show { opacity: 1; transform: none; }
-    @media (max-width: 900px) {
-      .navlinks { gap: 12px; }
-      .hero-grid { grid-template-columns: 1fr .75fr; }
-      .hero::before { right: 1%; width: 330px; }
-      .about-grid { grid-template-columns: 1fr; }
-      .projects-grid { grid-template-columns: repeat(2, 1fr); }
-      .skills-grid { grid-template-columns: repeat(4, 1fr); }
-    }
-    @media (max-width: 650px) {
-      .wrap { width: min(100% - 26px, 560px); }
-      .nav { min-height: 62px; }
-      .brand { font-size: 13px; }
-      .brand-mark { font-size: 23px; }
-      .menu-btn { display: block; }
-      .navlinks { display: none; position: absolute; top: 62px; left: 0; right: 0; padding: 14px 20px 18px; background: rgba(3,8,23,.98); border-bottom: 1px solid var(--line); flex-direction: column; align-items: stretch; gap: 0; }
-      .navlinks.open { display: flex; }
-      .navlinks a { padding: 10px 5px; }
-      .hero { min-height: auto; }
-      .hero-grid { grid-template-columns: 1fr; padding-top: 48px; padding-bottom: 32px; gap: 4px; }
-      h1 { font-size: clamp(42px, 13vw, 60px); }
-      .hero p { font-size: 14px; }
-      .photo-frame { min-height: 260px; margin-top: 5px; }
-      .photo-orbit { width: 245px; }
-      .photo-placeholder { width: 190px; aspect-ratio: 4/4.5; }
-      .section { padding: 42px 0; }
-      .about-card { flex-direction: column; padding: 18px; }
-      .mini-photo { width: 100%; min-height: 140px; }
-      .skills-card { padding: 18px; }
-      .skills-grid { grid-template-columns: repeat(3, 1fr); }
-      .projects-grid { grid-template-columns: 1fr; }
-      .project-visual { height: 150px; }
-      .art-card { grid-template-columns: 1fr; }
-      .art-visual { min-height: 170px; border-right: 0; border-bottom: 1px solid var(--line); }
-      .art-content { padding: 22px; }
-      .contact-grid { grid-template-columns: 1fr; }
-      .form-row { grid-template-columns: 1fr; gap: 0; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fasta Biqul Khairat | Portfolio</title>
+<style>
+:root{--bg:#020b19;--panel:#03152b;--panel2:#061c35;--blue:#00a8ff;--cyan:#00e0ff;--text:#f4f8ff;--muted:#a8bfd9;--line:#075ca7}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Arial,Helvetica,sans-serif;background:radial-gradient(ellipse at 50% 0%,#082b54 0%,#020b19 48%,#010711 100%);color:var(--text);line-height:1.5}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1180px,94%);margin:auto}
+header{position:sticky;top:0;z-index:20;background:rgba(1,9,22,.94);backdrop-filter:blur(14px);border-bottom:1px solid #075da5}
+.nav{min-height:66px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:700}
+.logo{font-size:27px;font-weight:900;color:var(--cyan);letter-spacing:-2px}
+nav{display:flex;align-items:center;gap:23px;font-size:13px;color:#d8e7fb}
+nav a:hover,nav a.active{color:var(--cyan)}
+.download{border:1px solid var(--blue);border-radius:24px;padding:8px 14px;color:#fff}
+.hero{min-height:360px;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:28px;padding:34px 0 28px;position:relative;overflow:hidden;border-bottom:1px solid #075da5}
+.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(1,10,24,.97),rgba(1,10,24,.75),rgba(1,10,24,.18)),url('');pointer-events:none}
+.hero-copy,.hero-visual{position:relative;z-index:1}
+.kicker{color:var(--cyan);font-size:14px;margin-bottom:4px}
+h1{font-size:clamp(38px,5vw,62px);line-height:1.02;letter-spacing:-1.5px;margin-bottom:8px}
+h1 span{color:var(--blue)}
+.hero h3{font-size:17px;margin:8px 0}
+.hero p{color:var(--muted);font-size:13px;max-width:550px}
+.actions{display:flex;gap:12px;margin:18px 0}
+.btn{display:inline-block;border:1px solid var(--blue);border-radius:22px;padding:9px 17px;font-size:13px;background:linear-gradient(100deg,#009dff,#144eff);color:white}
+.btn.outline{background:transparent}
+.socials{display:flex;gap:10px;margin-top:15px}
+.socials a{width:29px;height:29px;border-radius:50%;display:grid;place-items:center;background:#102b4a;border:1px solid #1c5c96;font-size:12px;font-weight:bold}
+.hero-visual{height:300px;display:flex;align-items:center;justify-content:center}
+.photo-frame{width:min(100%,400px);height:285px;border:1px solid #0876d2;border-radius:14px;background:linear-gradient(145deg,#06284c,#031326);box-shadow:0 0 28px #007bff25;overflow:hidden;display:flex;align-items:center;justify-content:center;color:#79cfff;text-align:center;padding:12px}
+.photo-frame img{width:100%;height:100%;object-fit:cover;border-radius:8px}
+.placeholder{font-size:14px;max-width:260px}
+.section{padding:20px 0}
+.grid-top{display:grid;grid-template-columns:1fr 1.25fr 1.65fr;gap:10px}
+.panel{background:linear-gradient(145deg,rgba(4,25,48,.96),rgba(1,12,27,.98));border:1px solid #075ca7;border-radius:14px;padding:14px;box-shadow:0 0 20px #007bff0c}
+.panel-title{display:flex;align-items:center;gap:9px;font-size:17px;margin-bottom:9px}
+.panel-title .symbol{font-size:22px;color:var(--cyan)}
+.profile-photo{height:170px;background:#071b31;border:1px solid #0c5790;border-radius:9px;overflow:hidden;display:grid;place-items:center;color:#80cfff;text-align:center;font-size:12px;padding:10px}
+.profile-photo img{width:100%;height:100%;object-fit:cover}
+.quote{color:#9cddff;font-style:italic;font-size:12px;margin-top:8px}
+.about-copy{font-size:12px;color:#d5e5f7}
+.info{margin-top:10px;color:#a9c9eb;font-size:12px}
+.skills{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}
+.skill{min-height:61px;border:1px solid #0b3a68;border-radius:8px;background:#041a32;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;font-size:11px;padding:5px}
+.skill b{font-size:19px;color:var(--cyan);margin-bottom:2px}
+.section-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}
+.section-head h2{font-size:19px}
+.section-head p{font-size:11px;color:var(--muted)}
+.see-all{border:1px solid #008fff;color:#69d7ff;border-radius:18px;padding:5px 12px;font-size:11px;white-space:nowrap}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.card{border:1px solid #075ca7;background:#03152a;border-radius:11px;padding:9px;min-width:0}
+.media{height:100px;background:#061d36;border:1px solid #0b4b80;border-radius:7px;display:grid;place-items:center;overflow:hidden;color:#7ecfff;text-align:center;font-size:11px;padding:8px}
+.media img{width:100%;height:100%;object-fit:cover;cursor:zoom-in}
+.card h3{font-size:12px;margin:8px 0 3px}
+.card p{font-size:10px;color:#abc4df}
+.tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:7px}
+.tags span{border:1px solid #075ca7;border-radius:12px;padding:2px 8px;font-size:9px;color:#8fe4ff}
+.cert-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:9px}
+.cert-card{border:1px solid #075ca7;border-radius:10px;background:#03152a;padding:8px;cursor:pointer}
+.cert-card .media{height:94px}
+.cert-card h3{font-size:11px;margin:6px 0 2px}
+.cert-card p{font-size:10px;color:#a9c4df}
+.arts{display:grid;grid-template-columns:260px 1fr;gap:16px;align-items:center}
+.arts .media{height:145px}
+.arts p{font-size:12px;color:#b8cfe7}
+.art-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.art-tags span{font-size:11px;border:1px solid #075ca7;border-radius:8px;padding:7px 10px;color:#bcecff}
+.contact-grid{display:grid;grid-template-columns:1fr 1.35fr 1fr;gap:18px}
+.contact-info p,.follow p{font-size:12px;color:#a9c4df;margin:7px 0}
+form{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+form label{font-size:11px;color:#b8d5f4}
+form input,form textarea{width:100%;display:block;margin-top:3px;padding:9px;border-radius:7px;border:1px solid #0b3e70;background:#031329;color:white;font:inherit;font-size:11px}
+form textarea{height:66px;resize:vertical}
+form .full{grid-column:1/-1}
+form button{grid-column:1/-1;border:0;border-radius:18px;padding:10px;color:#fff;background:linear-gradient(90deg,#009dff,#174fff);cursor:pointer}
+footer{text-align:center;padding:20px 0 28px;font-size:10px;color:#8aaed4}
+#lightbox{display:none;position:fixed;inset:0;z-index:99;background:#000e;align-items:center;justify-content:center;padding:20px}
+#lightbox.open{display:flex}
+#lightbox img{max-width:95vw;max-height:90vh;border:1px solid #00a8ff;border-radius:8px}
+#lightbox button{position:absolute;top:18px;right:25px;background:#092541;color:white;border:1px solid #00a8ff;border-radius:50%;width:40px;height:40px;font-size:22px;cursor:pointer}
+@media(max-width:850px){nav{gap:10px;font-size:11px}.grid-top{grid-template-columns:1fr 1.2fr}.grid-top .skills-panel{grid-column:1/-1}.skills{grid-template-columns:repeat(6,1fr)}.cards{grid-template-columns:repeat(2,1fr)}.cert-grid{grid-template-columns:repeat(3,1fr)}.contact-grid{grid-template-columns:1fr 1fr}.follow{grid-column:1/-1}}
+@media(max-width:600px){.nav{align-items:flex-start;padding:12px 0;flex-direction:column}.nav nav{width:100%;overflow-x:auto;padding-bottom:5px}.hero{grid-template-columns:1fr;padding-top:28px}.hero-visual{height:220px}.photo-frame{height:210px}.grid-top,.contact-grid,.arts{grid-template-columns:1fr}.grid-top .skills-panel,.follow{grid-column:auto}.skills{grid-template-columns:repeat(3,1fr)}.cards{grid-template-columns:1fr 1fr}.cert-grid{grid-template-columns:repeat(2,1fr)}.section{padding:13px 0}.panel{padding:11px}.section-head h2{font-size:16px}}
+</style>
 </head>
 <body>
-  <header class="topbar">
-    <div class="wrap nav">
-      <a class="brand" href="#home" aria-label="Fasta Biqul Khairat, beranda"><span class="brand-mark">FBK</span><span>Fasta Biqul Khairat</span></a>
-      <button class="menu-btn" id="menuBtn" aria-label="Buka menu" aria-expanded="false">☰</button>
-      <nav class="navlinks" id="navLinks" aria-label="Navigasi utama">
-        <a class="active" href="#home">Home</a>
-        <a href="#tentang">Tentang</a>
-        <a href="#keahlian">Keahlian</a>
-        <a href="#proyek">Proyek</a>
-        <a href="#kesenian">Kesenian</a>
-        <a href="#kontak">Kontak</a>
-      </nav>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#home"><span class="logo">FBK</span><span>Fasta Biqul Khairat</span></a>
+    <nav>
+      <a class="active" href="#home">Home</a><a href="#tentang">Tentang</a><a href="#proyek">Proyek</a><a href="#sertifikat">Sertifikat</a><a href="#kesenian">Kesenian</a><a href="#kontak">Kontak</a>
+      <a class="download" href="cv-fasta.pdf" download>↓ Download CV</a>
+    </nav>
+  </div>
+</header>
+<main>
+<section class="hero wrap" id="home">
+  <div class="hero-copy">
+    <div class="kicker">Halo, saya</div>
+    <h1>Fasta Biqul<br><span>Khairat</span></h1>
+    <h3>Mahasiswa PTIK | Pecinta Teknologi | Calon Developer</h3>
+    <p>Saya adalah mahasiswa Pendidikan Teknik Informatika dan Komunikasi (PTIK). Saya tertarik di bidang teknologi, jaringan, pemrograman, desain, dan seni budaya Minangkabau. Saya terus belajar hal baru untuk mengembangkan kemampuan diri.</p>
+    <div class="actions"><a class="btn" href="#proyek">▣ Lihat Proyek →</a><a class="btn outline" href="#kontak">✉ Hubungi Saya</a></div>
+    <div class="socials"><a href="#" aria-label="GitHub">GH</a><a href="#" aria-label="Instagram">IG</a><a href="#" aria-label="YouTube">▶</a><a href="#" aria-label="LinkedIn">in</a></div>
+  </div>
+  <div class="hero-visual">
+    <!-- FOTO UTAMA: ganti file hero-fasta.jpg dengan foto kamu. Cara memasukkan foto ada di panduan. -->
+    <div class="photo-frame"><div class="placeholder">FOTO UTAMA<br>Letakkan foto kamu dengan nama<br><b>hero-fasta.jpg</b></div></div>
+  </div>
+</section>
+
+<section class="section wrap" id="tentang">
+  <div class="grid-top">
+    <article class="panel">
+      <div class="profile-photo"><div>FOTO PROFIL<br><b>profil-fasta.jpg</b></div></div>
+      <p class="quote">“Jangan berhenti belajar, karena dunia terus berubah.”</p>
+    </article>
+    <article class="panel">
+      <div class="panel-title"><span class="symbol">◉</span><h2>Tentang Saya</h2></div>
+      <p class="about-copy">Saya Fasta Biqul Khairat, mahasiswa Pendidikan Teknik Informatika dan Komputer (PTIK). Saya tertarik mempelajari teknologi, jaringan komputer, pemrograman, desain grafis, dan budaya Minangkabau. Saya ingin terus menambah pengalaman dan mengembangkan kemampuan.</p>
+      <p class="info">🎓 Pendidikan<br>PTIK — Semester 1</p>
+      <p class="info">📍 Lokasi<br>Bukittinggi, Sumatera Barat</p>
+      <p class="info">✉ Email<br>fasta.biqulkhairat@gmail.com</p>
+    </article>
+    <article class="panel skills-panel">
+      <div class="section-head"><div class="panel-title"><span class="symbol">♧</span><h2>Keahlian</h2></div><a class="see-all" href="#proyek">Lihat Proyek →</a></div>
+      <div class="skills">
+        <div class="skill"><b>5</b>HTML</div><div class="skill"><b>3</b>CSS</div><div class="skill"><b>JS</b>JavaScript</div><div class="skill"><b>PHP</b>PHP</div>
+        <div class="skill"><b>◉</b>MySQL</div><div class="skill"><b>〽</b>MikroTik</div><div class="skill"><b>♟</b>Linux</div><div class="skill"><b>⌘</b>Networking</div>
+        <div class="skill"><b>✎</b>Desain Grafis</div><div class="skill"><b>▣</b>Microsoft Office</div><div class="skill"><b>C++</b>C++</div><div class="skill"><b>GH</b>Git & GitHub</div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="section wrap" id="proyek">
+  <article class="panel">
+    <div class="section-head"><div><h2>▣ &nbsp;Proyek Saya</h2><p>Beberapa proyek yang pernah saya buat selama belajar dan mengerjakan tugas.</p></div><a class="see-all" href="#kontak">Lihat Semua →</a></div>
+    <div class="cards">
+      <article class="card"><div class="media"><span>GAMBAR PROYEK 1<br>proyek-portfolio.jpg</span></div><h3>Website Portofolio</h3><p>Website portofolio pribadi yang dibuat menggunakan HTML, CSS, dan JavaScript.</p><div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div></article>
+      <article class="card"><div class="media"><span>GAMBAR PROYEK 2<br>proyek-guestbook.jpg</span></div><h3>Guestbook SMKN 1 Bukittinggi</h3><p>Aplikasi buku tamu berbasis web untuk mencatat kunjungan.</p><div class="tags"><span>PHP</span><span>MySQL</span><span>Apache</span></div></article>
+      <article class="card"><div class="media"><span>GAMBAR PROYEK 3<br>proyek-mikrotik.jpg</span></div><h3>Konfigurasi OSPF di MikroTik</h3><p>Implementasi dan pengujian konfigurasi jaringan OSPF.</p><div class="tags"><span>MikroTik</span><span>Networking</span></div></article>
+      <article class="card"><div class="media"><span>GAMBAR PROYEK 4<br>proyek-debian.jpg</span></div><h3>Server Debian</h3><p>Praktik layanan web server, database, dan jaringan di Debian.</p><div class="tags"><span>Linux</span><span>Apache</span><span>MySQL</span></div></article>
     </div>
-  </header>
+  </article>
+</section>
 
-  <main>
-    <section class="hero" id="home">
-      <div class="wrap hero-grid">
-        <div>
-          <div class="eyebrow">Portofolio pribadi · teknologi & budaya</div>
-          <h1>Halo, saya<br><span class="gradient-text">Fasta Biqul Khairat</span></h1>
-          <h2>Mahasiswa PTIK | Pecinta Teknologi | Penggiat Seni Minang</h2>
-          <p>Saya tertarik pada bidang teknologi, jaringan komputer, pemrograman, dan desain. Selain itu, saya juga memiliki bakat dan ketertarikan di bidang seni budaya Minangkabau.</p>
-          <div class="actions">
-            <a class="btn" href="#proyek">▣ Lihat Proyek ↗</a>
-            <a class="btn ghost" href="#kontak">✉ Hubungi Saya</a>
-          </div>
-          <div class="socials" aria-label="Tautan sosial">
-            <!-- Ganti tanda # dengan tautan akun media sosialmu -->
-            <a href="#" aria-label="GitHub" title="GitHub">GH</a>
-            <a href="#" aria-label="Instagram" title="Instagram">IG</a>
-            <a href="#" aria-label="YouTube" title="YouTube">YT</a>
-            <a href="#" aria-label="LinkedIn" title="LinkedIn">in</a>
-          </div>
-        </div>
-        <div class="photo-frame" aria-label="Tempat foto profil">
-          <div class="photo-orbit"></div>
-          <!-- CARA MEMASANG FOTO: simpan foto sebagai foto-fasta.jpg di folder yang sama dengan index.html.
-               Lalu ganti blok .photo-placeholder di bawah dengan:
-               <img class="hero-photo" src="foto-fasta.jpg" alt="Foto Fasta Biqul Khairat">
-               Tambahkan CSS .hero-photo { position:relative; z-index:2; width:min(300px,72%); aspect-ratio:4/5; object-fit:cover; border-radius:24px; border:1px solid var(--blue); box-shadow:0 0 30px rgba(0,145,255,.24); }
-          -->
-          <div class="photo-placeholder">
-            <span class="camera">＋</span>
-            <strong>Foto Fasta</strong>
-            <span>Tempat foto profil kamu</span>
-            <small>Ganti dengan foto sendiri</small>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="tentang">
-      <div class="wrap">
-        <div class="section-title reveal">
-          <div class="eyebrow">01 / Tentang saya</div>
-          <h2 class="section-heading">Kenali Saya Lebih Dekat</h2>
-          <p class="section-intro">Perjalanan belajar, hal yang saya sukai, dan tujuan saya ke depan.</p>
-        </div>
-        <div class="about-grid">
-          <article class="panel about-card reveal">
-            <div class="mini-photo"><div><span>＋</span><br><strong>Foto profil</strong><br><small>Opsional: pakai foto yang sama</small></div></div>
-            <div>
-              <h3>Fasta Biqul Khairat</h3>
-              <p>Saya mahasiswa Pendidikan Teknologi Informasi dan Komunikasi (PTIK). Saya senang mempelajari hal baru, terutama yang berhubungan dengan teknologi, jaringan, pemrograman, dan desain.</p>
-              <p>Di luar bidang teknologi, saya juga menyukai seni Minangkabau dan ingin ikut menjaga agar budaya daerah tetap dikenal oleh generasi muda.</p>
-              <div class="facts">
-                <div>🎓 <strong>Pendidikan</strong><span>PTIK · Semester 1</span></div>
-                <div>📍 <strong>Lokasi</strong><span>Sumatera Barat, Indonesia</span></div>
-                <div>💡 <strong>Minat</strong><span>Teknologi, desain, dan seni budaya Minang</span></div>
-              </div>
-            </div>
-          </article>
-          <article class="panel skills-card reveal" id="keahlian">
-            <h3>⚡ Keahlian & Minat</h3>
-            <p class="section-intro" style="margin-bottom:17px">Hal yang sedang saya pelajari dan kembangkan.</p>
-            <div class="skills-grid">
-              <div class="skill"><span class="symbol">HTML</span><span>HTML</span></div>
-              <div class="skill"><span class="symbol">CSS</span><span>CSS</span></div>
-              <div class="skill"><span class="symbol">JS</span><span>JavaScript</span></div>
-              <div class="skill"><span class="symbol">C++</span><span>C++</span></div>
-              <div class="skill"><span class="symbol">DB</span><span>Database</span></div>
-              <div class="skill"><span class="symbol">⌘</span><span>MikroTik</span></div>
-              <div class="skill"><span class="symbol">Linux</span><span>Linux / Debian</span></div>
-              <div class="skill"><span class="symbol">NET</span><span>Jaringan</span></div>
-              <div class="skill"><span class="symbol">✎</span><span>Desain Grafis</span></div>
-              <div class="skill"><span class="symbol">IT</span><span>Teknologi</span></div>
-              <div class="skill"><span class="symbol">🎭</span><span>Seni Minang</span></div>
-              <div class="skill"><span class="symbol">✦</span><span>Kreativitas</span></div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="proyek">
-      <div class="wrap">
-        <div class="section-title reveal">
-          <div class="eyebrow">02 / Hasil karya</div>
-          <h2 class="section-heading">Proyek Saya</h2>
-          <p class="section-intro">Beberapa proyek yang bisa ditampilkan di sini. Sesuaikan dengan proyek yang benar-benar pernah kamu kerjakan.</p>
-        </div>
-        <div class="projects-grid">
-          <article class="panel project reveal">
-            <div class="project-visual">⌘_</div>
-            <h3>Website Portofolio</h3>
-            <p>Website pribadi untuk memperkenalkan profil, keahlian, dan hasil karya.</p>
-            <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div>
-          </article>
-          <article class="panel project reveal">
-            <div class="project-visual">▤</div>
-            <h3>Aplikasi Buku Tamu</h3>
-            <p>Proyek web buku tamu dengan halaman data dan penyimpanan database.</p>
-            <div class="tags"><span class="tag">PHP</span><span class="tag">MySQL</span></div>
-          </article>
-          <article class="panel project reveal">
-            <div class="project-visual">⌘ ◇ ⌘</div>
-            <h3>Jaringan MikroTik</h3>
-            <p>Latihan konfigurasi jaringan dan routing untuk kebutuhan praktik.</p>
-            <div class="tags"><span class="tag">MikroTik</span><span class="tag">OSPF</span></div>
-          </article>
-          <article class="panel project reveal">
-            <div class="project-visual">$_ Linux</div>
-            <h3>Server Debian</h3>
-            <p>Latihan pengelolaan server dan layanan jaringan pada lingkungan Linux.</p>
-            <div class="tags"><span class="tag">Linux</span><span class="tag">Server</span></div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="kesenian">
-      <div class="wrap">
-        <div class="section-title reveal">
-          <div class="eyebrow">03 / Seni & budaya</div>
-          <h2 class="section-heading">Kesenian Minangkabau</h2>
-        </div>
-        <article class="panel art-card reveal">
-          <div class="art-visual">
-            <div><div class="art-icon">❖</div><strong>Seni Minang</strong><p class="section-intro">Kreativitas, tradisi, dan jati diri.</p></div>
-          </div>
-          <div class="art-content">
-            <h3>Melestarikan Budaya, Menjaga Jati Diri</h3>
-            <p>Saya juga memiliki bakat dan ketertarikan di bidang seni Minangkabau. Bagi saya, seni bukan hanya tentang penampilan, tetapi juga cara untuk mengenal, menghargai, dan melestarikan budaya daerah.</p>
-            <p>Saya ingin terus mengembangkan kemampuan di bidang seni serta ikut memperkenalkan kekayaan budaya Minang kepada generasi muda.</p>
-            <div class="art-pills"><span>✦ Seni pertunjukan</span><span>♫ Musik tradisional</span><span>⌂ Adat & tradisi Minang</span></div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="section" id="kontak">
-      <div class="wrap">
-        <div class="section-title reveal">
-          <div class="eyebrow">04 / Mari terhubung</div>
-          <h2 class="section-heading">Hubungi Saya</h2>
-          <p class="section-intro">Punya pertanyaan atau ingin melihat karya saya lebih lanjut? Silakan hubungi saya.</p>
-        </div>
-        <div class="contact-grid">
-          <div class="panel contact-info reveal">
-            <h3>Informasi Kontak</h3>
-            <p>Tambahkan informasi yang memang ingin kamu bagikan secara publik.</p>
-            <div class="contact-line"><b>✉</b><span>Alamat email kamu</span></div>
-            <div class="contact-line"><b>◎</b><span>Akun Instagram kamu</span></div>
-            <div class="contact-line"><b>⌖</b><span>Sumatera Barat, Indonesia</span></div>
-            <div class="socials">
-              <!-- Ganti # dengan tautan akunmu -->
-              <a href="#" aria-label="GitHub">GH</a><a href="#" aria-label="Instagram">IG</a><a href="#" aria-label="YouTube">YT</a>
-            </div>
-          </div>
-          <form class="panel contact-form reveal" id="contactForm">
-            <div class="form-row">
-              <div><label for="name">Nama</label><input id="name" name="name" placeholder="Masukkan nama kamu" required></div>
-              <div><label for="email">Email</label><input id="email" name="email" type="email" placeholder="nama@email.com" required></div>
-            </div>
-            <label for="message">Pesan</label>
-            <textarea id="message" name="message" placeholder="Tulis pesan di sini..." required></textarea>
-            <button class="btn" type="submit">✉ Siapkan Pesan Email</button>
-            <p class="form-note">Form ini akan membuka aplikasi email kamu. Isi alamat email tujuan di kode sebelum digunakan.</p>
-          </form>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="wrap footer-inner">
-      <span>© <span id="year"></span> Fasta Biqul Khairat · Portofolio Pribadi</span>
-      <span>Dibuat dengan semangat belajar dan kreativitas.</span>
+<section class="section wrap" id="sertifikat">
+  <article class="panel">
+    <div class="section-head"><div><h2>▣ &nbsp;Sertifikat</h2><p>Tambahkan sertifikat pelatihan, kompetensi, atau kegiatan yang pernah kamu ikuti.</p></div><span class="see-all">Klik foto untuk memperbesar</span></div>
+    <div class="cert-grid">
+      <article class="cert-card"><div class="media"><span>SERTIFIKAT 1<br>sertifikat-1.jpg</span></div><h3>Sertifikat Pelatihan</h3><p>Nama pelatihan dan tahun</p></article>
+      <article class="cert-card"><div class="media"><span>SERTIFIKAT 2<br>sertifikat-2.jpg</span></div><h3>Sertifikat Uji Kompetensi</h3><p>Nama kegiatan dan tahun</p></article>
+      <article class="cert-card"><div class="media"><span>SERTIFIKAT 3<br>sertifikat-3.jpg</span></div><h3>Sertifikat Desain Grafis</h3><p>Nama kegiatan dan tahun</p></article>
+      <article class="cert-card"><div class="media"><span>SERTIFIKAT 4<br>sertifikat-4.jpg</span></div><h3>Sertifikat Workshop IT</h3><p>Nama kegiatan dan tahun</p></article>
+      <article class="cert-card"><div class="media"><span>SERTIFIKAT 5<br>sertifikat-5.jpg</span></div><h3>Sertifikat Linux</h3><p>Nama kegiatan dan tahun</p></article>
     </div>
-  </footer>
-  <a class="backtop" href="#home" aria-label="Kembali ke atas">↑</a>
+  </article>
+</section>
 
-  <script>
-    const menuBtn = document.getElementById('menuBtn');
-    const navLinks = document.getElementById('navLinks');
-    menuBtn.addEventListener('click', () => {
-      const opened = navLinks.classList.toggle('open');
-      menuBtn.setAttribute('aria-expanded', String(opened));
-    });
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('open');
-        menuBtn.setAttribute('aria-expanded', 'false');
-      });
-    });
-    document.getElementById('year').textContent = new Date().getFullYear();
+<section class="section wrap" id="kesenian">
+  <article class="panel arts">
+    <div><div class="panel-title"><span class="symbol">✺</span><h2>Kesenian Minangkabau</h2></div><div class="media"><span>FOTO KESENIAN<br>kesenian-minang.jpg</span></div></div>
+    <div><h3>Melestarikan Budaya, Menjaga Jati Diri</h3><p>Saya juga tertarik pada budaya dan kesenian Minangkabau. Budaya merupakan bagian penting dari identitas yang perlu dijaga dan dikenalkan kepada generasi muda.</p><div class="art-tags"><span>✦ Tari Tradisional Minang</span><span>✦ Musik Tradisional</span><span>✦ Adat dan Tradisi</span></div></div>
+  </article>
+</section>
 
-    const revealObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show');
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-    document.getElementById('contactForm').addEventListener('submit', event => {
-      event.preventDefault();
-      // GANTI alamat di bawah ini dengan email kamu sebelum dipublikasikan.
-      const destinationEmail = 'ganti-email-kamu@example.com';
-      if (destinationEmail === 'ganti-email-kamu@example.com') {
-        alert('Form belum dihubungkan. Buka index.html lalu ganti ganti-email-kamu@example.com dengan alamat email tujuan kamu.');
-        return;
-      }
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const message = document.getElementById('message').value.trim();
-      const subject = encodeURIComponent('Pesan dari portofolio - ' + name);
-      const body = encodeURIComponent('Nama: ' + name + '\nEmail: ' + email + '\n\nPesan:\n' + message);
-      window.location.href = 'mailto:' + destinationEmail + '?subject=' + subject + '&body=' + body;
-    });
-  </script>
+<section class="section wrap" id="kontak">
+  <article class="panel contact-grid">
+    <div class="contact-info"><div class="panel-title"><span class="symbol">◉</span><h2>Kontak Saya</h2></div><p>Jika ada pertanyaan, proyek, atau sekadar ingin berkenalan, silakan hubungi saya.</p><p>✉ Email<br>fasta.biqulkhairat@gmail.com</p><p>☎ WhatsApp<br>Masukkan nomor kamu</p><p>📍 Bukittinggi, Sumatera Barat</p></div>
+    <div><form id="contactForm"><label>Nama<input id="senderName" required placeholder="Masukkan nama Anda"></label><label>Email<input id="senderEmail" type="email" required placeholder="Masukkan email Anda"></label><label class="full">Pesan<textarea id="senderMessage" required placeholder="Tulis pesan Anda..."></textarea></label><button type="submit">➤ Kirim Pesan</button></form></div>
+    <div class="follow"><h3>Ikuti Saya</h3><p>Temukan saya di media sosial</p><div class="socials"><a href="#">GH</a><a href="#">IG</a><a href="#">▶</a><a href="#">in</a></div><p class="quote">Terima kasih sudah berkunjung!</p></div>
+  </article>
+</section>
+</main>
+<footer>© 2026 Fasta Biqul Khairat. Dibuat sambil terus belajar.</footer>
+<div id="lightbox" aria-label="Pratinjau gambar"><button type="button" id="closeLightbox" aria-label="Tutup">×</button><img src="" alt="Gambar diperbesar"></div>
+<script>
+// Gambar sertifikat yang sudah dipasang dapat diklik untuk dilihat lebih besar.
+document.querySelectorAll('.media img, .profile-photo img, .photo-frame img').forEach(img=>{
+  img.addEventListener('click',()=>{const box=document.getElementById('lightbox');box.querySelector('img').src=img.src;box.classList.add('open')});
+});
+document.getElementById('closeLightbox').addEventListener('click',()=>document.getElementById('lightbox').classList.remove('open'));
+document.getElementById('lightbox').addEventListener('click',e=>{if(e.target.id==='lightbox')e.currentTarget.classList.remove('open')});
+// Form membuka aplikasi email. Ganti email di bawah dengan alamat email kamu.
+document.getElementById('contactForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  const to='fasta.biqulkhairat@gmail.com';
+  const subject=encodeURIComponent('Pesan dari portofolio: '+document.getElementById('senderName').value);
+  const body=encodeURIComponent('Nama: '+document.getElementById('senderName').value+'\nEmail: '+document.getElementById('senderEmail').value+'\n\nPesan:\n'+document.getElementById('senderMessage').value);
+  window.location.href='mailto:'+to+'?subject='+subject+'&body='+body;
+});
+</script>
 </body>
 </html>
